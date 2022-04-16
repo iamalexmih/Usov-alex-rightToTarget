@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="landscape" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Usov_alex_rightToTarget" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="25" minValue="0.0" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="4YV-FQ-JO9">
+                                <rect key="frame" x="62" y="120" width="772" height="31"/>
+                                <imageReference key="minimumValueImage" image="0.circle" catalog="system" symbolScale="large"/>
+                                <imageReference key="maximumValueImage" image="50.circle" catalog="system" symbolScale="large"/>
+                                <connections>
+                                    <action selector="sliderActionHuman:" destination="BYZ-38-t0r" eventType="valueChanged" id="B63-YA-95N"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eK0-JT-eJf">
+                                <rect key="frame" x="410" y="185" width="76.5" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="human Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ym-W3-pRd">
+                                <rect key="frame" x="358" y="229" width="180" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="41l-zQ-xOr">
+                                <rect key="frame" x="398.5" y="297" width="99" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="ПРОВЕРКА"/>
+                                <connections>
+                                    <action selector="checkNumberButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tGH-g7-I6f"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="раунд №Х, Набранно очков: х" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f30-kA-3f0">
+                                <rect key="frame" x="626" y="20" width="240" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="f30-kA-3f0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="9N0-C9-Jlr"/>
+                            <constraint firstItem="4YV-FQ-JO9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="120" id="9xm-2r-Poa"/>
+                            <constraint firstItem="eK0-JT-eJf" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="DJF-TB-XOs"/>
+                            <constraint firstAttribute="trailing" secondItem="f30-kA-3f0" secondAttribute="trailing" constant="30" id="Iu3-Bj-b25"/>
+                            <constraint firstItem="41l-zQ-xOr" firstAttribute="top" secondItem="2Ym-W3-pRd" secondAttribute="bottom" constant="32" id="Nmk-oS-c1e"/>
+                            <constraint firstItem="4YV-FQ-JO9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fUN-Wh-O08"/>
+                            <constraint firstItem="2Ym-W3-pRd" firstAttribute="centerX" secondItem="eK0-JT-eJf" secondAttribute="centerX" id="hMe-1W-hB2"/>
+                            <constraint firstItem="2Ym-W3-pRd" firstAttribute="top" secondItem="eK0-JT-eJf" secondAttribute="bottom" constant="8" symbolic="YES" id="jIR-6w-kwg"/>
+                            <constraint firstItem="4YV-FQ-JO9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="jS1-e8-6TJ"/>
+                            <constraint firstItem="eK0-JT-eJf" firstAttribute="top" secondItem="4YV-FQ-JO9" secondAttribute="bottom" constant="35" id="rGt-hZ-Yfp"/>
+                            <constraint firstItem="41l-zQ-xOr" firstAttribute="centerX" secondItem="2Ym-W3-pRd" secondAttribute="centerX" id="vfO-us-OXJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4YV-FQ-JO9" secondAttribute="trailing" constant="20" id="zeh-6l-6R9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="humanLabel" destination="2Ym-W3-pRd" id="hRq-3u-mnZ"/>
+                        <outlet property="infoLabel" destination="f30-kA-3f0" id="PGD-5e-JEj"/>
+                        <outlet property="secretNumberLabel" destination="eK0-JT-eJf" id="v5T-K3-iMH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="34.821428571428569" y="82.608695652173921"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="0.circle" catalog="system" width="128" height="121"/>
+        <image name="50.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
