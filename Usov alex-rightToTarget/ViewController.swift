@@ -9,66 +9,58 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var game: Game!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        secretNumberRandom()
+        game = Game(minSecretNumber: 1, maxSecretNumber: 50, rounds: 5)
+        updateLabelSecretNumber(newNumberRandom: String(game.secretNumber))
         humanLabel.text = ("Human number = 25")
         infoLabelText()
     }
-
-    var secretNumber = 0 { // didSet обновление лэйбла при изм загадоного числа.
-        didSet {
-            secretNumberLabel.text = String(secretNumber)
-        }
-    }
-    var points = 0
-    var round = 1
-    var humanNumber = 0
     
+    //MARK: - IB Outlets and Actions
     
     @IBOutlet weak var secretNumberLabel: UILabel!
     @IBOutlet weak var humanLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     
-    
     @IBAction func sliderActionHuman(_ sender: UISlider) {
-        humanNumber = Int(sender.value)
-        humanLabel.text = ("Human number = \(humanNumber)")
-        
+        game.humanNumber = Int(sender.value)
+        humanLabel.text = ("Human number = \(game.humanNumber)")
     }
     
     @IBAction func checkNumberButton(_ sender: UIButton) {
-        checkNumber()
-        alertWindow()
-        secretNumberRandom()
-    }
-    
-    func secretNumberRandom() {
-        secretNumber = Int.random(in: 1...50)
-    }
-    
-    func checkNumber() {
-        guard round <= 5 else {return}
-        let result = abs(secretNumber-humanNumber)
-        points += 50-result
-        round += 1
+        game.calculateScore()
+        checkIsGameEnded()
+        updateLabelSecretNumber(newNumberRandom: String(game.secretNumber))
         infoLabelText()
     }
     
-    func alertWindow() {
-        if round > 5 {
-            let alert = UIAlertController(title: "Игра окончена", message: "Вы заработали \(points) очков", preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "Начать Заново", style: .default, handler: nil)
-            alert.addAction(alertAction)
-            present(alert, animated: true, completion: nil)
-            points = 0
-            round = 1
-            infoLabelText()
+    //MARK: - interaction (взаимодействие) View (Interface) and Model
+
+    func updateLabelSecretNumber(newNumberRandom: String) {//не знаю почему Усов решил передать параметр в функцию, можно было просто внутри приравнять
+        secretNumberLabel.text = newNumberRandom
+    }
+    
+    func checkIsGameEnded() {
+        if game.isGameEnded {
+            alertWindow()
+            game.restartGame()
+        } else {
+            game.startNewRound()
         }
     }
     
+    func alertWindow() {
+        let alert = UIAlertController(title: "Игра окончена", message: "Вы заработали \(game.score) очков", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Начать Заново", style: .default, handler: nil)
+            alert.addAction(alertAction)
+            present(alert, animated: true, completion: nil)
+    }
+    
     func infoLabelText() {
-        infoLabel.text = "раунд №\(round), Набранно очков: \(points)"
+        infoLabel.text = "раунд №\(game.currentRound), Набранно очков: \(game.score)"
     }
     
         
