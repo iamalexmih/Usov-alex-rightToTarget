@@ -13,8 +13,12 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        game = Game(minSecretNumber: 1, maxSecretNumber: 50, rounds: 5)
-        updateLabelSecretNumber(newNumberRandom: String(game.secretNumber))
+        //создаем объект Генератор случ чисел
+        let generatorRandomNumber = GeneratorRandomNumbers(minSecretNumber: 1, maxSecretNumber: 50)
+    
+        game = Game(getGenerateRandomNumber: generatorRandomNumber!, rounds: 5)
+
+        updateLabelSecretNumber(currentNumberRandom: String(game.roundGame.randomNumberForRoundGame))
         humanLabel.text = ("Human number = 25")
         infoLabelText()
     }
@@ -31,16 +35,17 @@ class ViewController: UIViewController {
     }
     
     @IBAction func checkNumberButton(_ sender: UIButton) {
-        game.calculateScore()
-        checkIsGameEnded()
-        updateLabelSecretNumber(newNumberRandom: String(game.secretNumber))
+        game.roundGame.calculateScorePerRound(humanNumber: game.humanNumber)
         infoLabelText()
+        checkIsGameEnded()
+        updateLabelSecretNumber(currentNumberRandom: String(game.roundGame.randomNumberForRoundGame))
+       
     }
     
     //MARK: - interaction (взаимодействие) View (Interface) and Model
 
-    func updateLabelSecretNumber(newNumberRandom: String) {//не знаю почему Усов решил передать параметр в функцию, можно было просто внутри приравнять
-        secretNumberLabel.text = newNumberRandom
+    func updateLabelSecretNumber(currentNumberRandom: String) {//не знаю почему Усов решил передать параметр в функцию, можно было просто внутри приравнять
+        secretNumberLabel.text = currentNumberRandom
     }
     
     func checkIsGameEnded() {
@@ -53,14 +58,14 @@ class ViewController: UIViewController {
     }
     
     func alertWindow() {
-        let alert = UIAlertController(title: "Игра окончена", message: "Вы заработали \(game.score) очков", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Игра окончена", message: "Вы заработали \(game.roundGame.score) очков", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "Начать Заново", style: .default, handler: nil)
             alert.addAction(alertAction)
             present(alert, animated: true, completion: nil)
     }
     
     func infoLabelText() {
-        infoLabel.text = "раунд №\(game.currentRound), Набранно очков: \(game.score)"
+        infoLabel.text = "раунд №\(game.currentRound), Набранно очков: \(game.scoreForGame)"
     }
     
         
