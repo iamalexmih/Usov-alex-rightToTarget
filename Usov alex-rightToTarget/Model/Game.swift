@@ -9,25 +9,27 @@ import Foundation
 
 protocol GameProtocol {
     
-    var score: Int {get}
-    var secretNumber: Int {get}
+    //var score: Int {get}
     var isGameEnded: Bool {get}
-    var humanNumber: Int {get}
     
+    var currentRound: Int {get}
+    var generateNumberDelegate: GeneratorProtocol {get}
+
     func restartGame()
     func startNewRound()
-    func calculateScore()
 }
 
 
 class Game: GameProtocol {
-    var score = 0
-    var humanNumber = 0
-    var secretNumber = 0
-    var minSecretNumber: Int
-    var maxSecretNumber: Int
+    
+    var generateNumberDelegate: GeneratorProtocol // Делегатор, просит Генератор, сгенерировать число.
+    var roundGame: RoundGameProtocol!
+    var scoreForGame = 0
+    
+    var randomNumberForGame = 0
     var rounds: Int
-    var currentRound = 1
+    var currentRound = 0
+    var humanNumber = 0
     var isGameEnded: Bool {
         if currentRound >= rounds {
             return true
@@ -36,32 +38,31 @@ class Game: GameProtocol {
         }
     }
     
-    init?(minSecretNumber: Int, maxSecretNumber: Int, rounds: Int) {
-        guard minSecretNumber <= maxSecretNumber else {return nil}
+    init(getGenerateRandomNumber: GeneratorProtocol, rounds: Int) {
+        generateNumberDelegate = getGenerateRandomNumber
         self.rounds = rounds
-        self.minSecretNumber = minSecretNumber
-        self.maxSecretNumber = maxSecretNumber
-        secretNumber = self.getNewRandomNumber()
+        //self.scoreDelegator = score
+        startNewRound()
     }
     
     func restartGame() {
         currentRound = 0
-        score = 0
+        //scoreDelegator.score = 0
         startNewRound()
     }
     
     func startNewRound() {
-        secretNumber = getNewRandomNumber()
+        //получаем число от делегата
+        randomNumberForGame = generateNumberDelegate.getGenerateRandomNumber()
+        //инициирую объект RoundGame, для передачи ему randomNumberForGame.
+        //Для подсчета очков внутри класса RoundGame в функции calculateScorePerRound.
+        scoreForGame += roundGame.score
+        roundGame = RoundGame(randomNumberForRoundGame: randomNumberForGame)
+        
         currentRound += 1
     }
     
-    private func getNewRandomNumber() -> Int {
-        Int.random(in: minSecretNumber...maxSecretNumber)
-    }
     
-    func calculateScore() {
-        score += 50-(abs(secretNumber-humanNumber))
-    }
     
     
     
