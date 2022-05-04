@@ -17,6 +17,7 @@ protocol RoundGameProtocol {
 
 class RoundGame: RoundGameProtocol {
     
+    //очки за Один раунд! Реализовать подсчет всех очков не получиться, так как класс все время инициализируется в функции рестарта. Для его инициализации необходимо чтоб класс Game уже был создан. Поэтому для подсчета очков сущности этого класса добавляются массив в классе Game.
     var score: Int = 0
     var randomNumberForRoundGame: Int = 0
     
@@ -24,6 +25,7 @@ class RoundGame: RoundGameProtocol {
         self.randomNumberForRoundGame = randomNumberForRoundGame
     }
     
+    //подсчет очков за Один Раунд
     func calculateScorePerRound(humanNumber: Int) {
         score += 50-(abs(randomNumberForRoundGame-humanNumber))
     }

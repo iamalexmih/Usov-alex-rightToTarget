@@ -31,7 +31,7 @@ class Game: GameProtocol {
     }
     
     var randomNumberForGame: Int!
-    var roundItems: [RoundGameProtocol] = []
+    var roundItems: [RoundGameProtocol] = [] //в массиве, каждая сущность roundGame имеет свойство score. Которое будет использовано для подсчета всех очков (totalScore) за 5 раундов.
     private var roundsTotal: Int!
     var humanNumber: Int!
     var isGameEnded: Bool {
