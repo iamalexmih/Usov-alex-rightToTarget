@@ -9,70 +9,66 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var game: Game!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        secretNumberRandom()
-        humanLabel.text = ("Human number = 25")
-        infoLabelText()
+        //создаем объект Генератор случ чисел
+        let generatorRandomNumber = GeneratorRandomNumbers(minSecretNumber: 1, maxSecretNumber: 50)
+        game = Game(getGenerateRandomNumber: generatorRandomNumber!, roundsTotal: 5)
+        updateLabels()
+        humanLabelAndButton()
     }
-
-    var secretNumber = 0 { // didSet обновление лэйбла при изм загадоного числа.
-        didSet {
-            secretNumberLabel.text = String(secretNumber)
-        }
-    }
-    var points = 0
-    var round = 1
-    var humanNumber = 0
     
+    //MARK: - IB Outlets and Actions
     
     @IBOutlet weak var secretNumberLabel: UILabel!
     @IBOutlet weak var humanLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
-    
+    @IBOutlet weak var checkNumberButtonOutlet: UIButton!
     
     @IBAction func sliderActionHuman(_ sender: UISlider) {
-        humanNumber = Int(sender.value)
-        humanLabel.text = ("Human number = \(humanNumber)")
-        
+        game.humanNumber = Int(sender.value)
+        humanLabel.text = ("Human number = \(game.humanNumber ?? 0)")
+        checkNumberButtonOutlet.isEnabled = true
     }
     
     @IBAction func checkNumberButton(_ sender: UIButton) {
-        checkNumber()
-        alertWindow()
-        secretNumberRandom()
+        game.roundGame.calculateScorePerRound(humanNumber: game.humanNumber)
+        checkIsGameEnded()
+        updateLabels()
     }
     
-    func secretNumberRandom() {
-        secretNumber = Int.random(in: 1...50)
-    }
+    //MARK: - interaction (взаимодействие) View (Interface) and Model
     
-    func checkNumber() {
-        guard round <= 5 else {return}
-        let result = abs(secretNumber-humanNumber)
-        points += 50-result
-        round += 1
-        infoLabelText()
-    }
-    
-    func alertWindow() {
-        if round > 5 {
-            let alert = UIAlertController(title: "Игра окончена", message: "Вы заработали \(points) очков", preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "Начать Заново", style: .default, handler: nil)
-            alert.addAction(alertAction)
-            present(alert, animated: true, completion: nil)
-            points = 0
-            round = 1
-            infoLabelText()
+    func checkIsGameEnded() {
+        if game.isGameEnded {
+            alertWindow()
+        } else {
+            game.startNewRound()
         }
     }
     
-    func infoLabelText() {
-        infoLabel.text = "раунд №\(round), Набранно очков: \(points)"
+    func alertWindow() {
+        let alert = UIAlertController(title: "Игра окончена", message: "Вы заработали \(game.totalScore) очков", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "Начать Заново", style: .default, handler: {
+            [weak self] _ in
+            self!.game.restartGame()
+            self!.updateLabels()
+            self!.humanLabelAndButton()
+            })
+            alert.addAction(alertAction)
+            present(alert, animated: true, completion: nil)
     }
     
-        
+    func updateLabels() {
+        secretNumberLabel.text = String(game.randomNumberForGame)
+        infoLabel.text = "раунд №\(game.roundItems.count), Набранно очков: \(game.totalScore)"
+    }
     
-    
+    func humanLabelAndButton() {
+        humanLabel.text = ("угадайте число используя слайдер")
+        checkNumberButtonOutlet.isEnabled = false
+    }
 }
 
