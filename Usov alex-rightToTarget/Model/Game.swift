@@ -9,9 +9,8 @@ import Foundation
 
 protocol GameProtocol {
     
-    var scoreForGame: Int {get}
+    var totalScore: Int {get}
     var isGameEnded: Bool {get}
-    
     
     var generateNumberDelegate: GeneratorProtocol {get}
 
@@ -25,16 +24,16 @@ class Game: GameProtocol {
     var generateNumberDelegate: GeneratorProtocol // Делегатор, просит Генератор, сгенерировать число.
     var roundGame: RoundGameProtocol!
     
-    var scoreForGame = 0
     var totalScore: Int {
         roundItems.reduce(into: 0) { partialResult, roundItems in
             partialResult = partialResult + roundItems.score
         }
     }
-    var randomNumberForGame = 0
+    
+    var randomNumberForGame: Int!
     var roundItems: [RoundGameProtocol] = []
-    var roundsTotal: Int!
-    var humanNumber = 0
+    private var roundsTotal: Int!
+    var humanNumber: Int!
     var isGameEnded: Bool {
         if  roundItems.count >= roundsTotal {
             return true
@@ -62,14 +61,4 @@ class Game: GameProtocol {
         roundGame = RoundGame(randomNumberForRoundGame: randomNumberForGame)
         roundItems.append(roundGame)
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

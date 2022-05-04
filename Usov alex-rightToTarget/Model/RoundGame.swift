@@ -27,8 +27,5 @@ class RoundGame: RoundGameProtocol {
     func calculateScorePerRound(humanNumber: Int) {
         score += 50-(abs(randomNumberForRoundGame-humanNumber))
     }
-    
-    
-    
 }
 

@@ -32,13 +32,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="human Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ym-W3-pRd">
-                                <rect key="frame" x="358" y="229" width="180" height="36"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <rect key="frame" x="388" y="229" width="120.5" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="41l-zQ-xOr">
-                                <rect key="frame" x="398.5" y="297" width="99" height="31"/>
+                                <rect key="frame" x="398.5" y="285" width="99" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="ПРОВЕРКА"/>
                                 <connections>
@@ -58,6 +58,7 @@
                             <constraint firstItem="f30-kA-3f0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="9N0-C9-Jlr"/>
                             <constraint firstItem="4YV-FQ-JO9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="120" id="9xm-2r-Poa"/>
                             <constraint firstItem="eK0-JT-eJf" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="DJF-TB-XOs"/>
+                            <constraint firstItem="f30-kA-3f0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="FJL-vX-9CJ"/>
                             <constraint firstAttribute="trailing" secondItem="f30-kA-3f0" secondAttribute="trailing" constant="30" id="Iu3-Bj-b25"/>
                             <constraint firstItem="41l-zQ-xOr" firstAttribute="top" secondItem="2Ym-W3-pRd" secondAttribute="bottom" constant="32" id="Nmk-oS-c1e"/>
                             <constraint firstItem="4YV-FQ-JO9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fUN-Wh-O08"/>
@@ -70,6 +71,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="checkNumberButtonOutlet" destination="41l-zQ-xOr" id="znh-YS-aY1"/>
                         <outlet property="humanLabel" destination="2Ym-W3-pRd" id="hRq-3u-mnZ"/>
                         <outlet property="infoLabel" destination="f30-kA-3f0" id="PGD-5e-JEj"/>
                         <outlet property="secretNumberLabel" destination="eK0-JT-eJf" id="v5T-K3-iMH"/>

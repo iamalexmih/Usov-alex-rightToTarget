@@ -15,10 +15,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         //создаем объект Генератор случ чисел
         let generatorRandomNumber = GeneratorRandomNumbers(minSecretNumber: 1, maxSecretNumber: 50)
-    
         game = Game(getGenerateRandomNumber: generatorRandomNumber!, roundsTotal: 5)
-        humanLabel.text = ("Human number = 25")
         updateLabels()
+        humanLabelAndButton()
     }
     
     //MARK: - IB Outlets and Actions
@@ -26,10 +25,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var secretNumberLabel: UILabel!
     @IBOutlet weak var humanLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var checkNumberButtonOutlet: UIButton!
     
     @IBAction func sliderActionHuman(_ sender: UISlider) {
         game.humanNumber = Int(sender.value)
-        humanLabel.text = ("Human number = \(game.humanNumber)")
+        humanLabel.text = ("Human number = \(game.humanNumber ?? 0)")
+        checkNumberButtonOutlet.isEnabled = true
     }
     
     @IBAction func checkNumberButton(_ sender: UIButton) {
@@ -46,8 +47,6 @@ class ViewController: UIViewController {
         } else {
             game.startNewRound()
         }
-        //infoLabelText()
-        //updateLabelSecretNumber()
     }
     
     func alertWindow() {
@@ -56,6 +55,7 @@ class ViewController: UIViewController {
             [weak self] _ in
             self!.game.restartGame()
             self!.updateLabels()
+            self!.humanLabelAndButton()
             })
             alert.addAction(alertAction)
             present(alert, animated: true, completion: nil)
@@ -66,6 +66,9 @@ class ViewController: UIViewController {
         infoLabel.text = "раунд №\(game.roundItems.count), Набранно очков: \(game.totalScore)"
     }
     
-    
+    func humanLabelAndButton() {
+        humanLabel.text = ("угадайте число используя слайдер")
+        checkNumberButtonOutlet.isEnabled = false
+    }
 }
 
