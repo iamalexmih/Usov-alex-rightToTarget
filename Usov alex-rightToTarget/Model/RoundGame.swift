@@ -22,12 +22,10 @@ class RoundGame: RoundGameProtocol {
     
     init(randomNumberForRoundGame: Int) {
         self.randomNumberForRoundGame = randomNumberForRoundGame
-        print("Инит RoundGame сгенерированное число = \(randomNumberForRoundGame)")
     }
     
     func calculateScorePerRound(humanNumber: Int) {
         score += 50-(abs(randomNumberForRoundGame-humanNumber))
-        print("calculateScorePerRound \(score)")
     }
     
     

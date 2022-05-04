@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         //создаем объект Генератор случ чисел
         let generatorRandomNumber = GeneratorRandomNumbers(minSecretNumber: 1, maxSecretNumber: 50)
     
-        game = Game(getGenerateRandomNumber: generatorRandomNumber!, rounds: 5)
+        game = Game(getGenerateRandomNumber: generatorRandomNumber!, roundsTotal: 5)
 
         updateLabelSecretNumber(currentNumberRandom: String(game.roundGame.randomNumberForRoundGame))
         humanLabel.text = ("Human number = 25")
@@ -36,8 +36,8 @@ class ViewController: UIViewController {
     
     @IBAction func checkNumberButton(_ sender: UIButton) {
         game.roundGame.calculateScorePerRound(humanNumber: game.humanNumber)
-        infoLabelText()
         checkIsGameEnded()
+        //infoLabelText()
         updateLabelSecretNumber(currentNumberRandom: String(game.roundGame.randomNumberForRoundGame))
        
     }
@@ -51,21 +51,25 @@ class ViewController: UIViewController {
     func checkIsGameEnded() {
         if game.isGameEnded {
             alertWindow()
+            infoLabelText()
             game.restartGame()
+            
         } else {
             game.startNewRound()
+            infoLabelText()
+
         }
     }
     
     func alertWindow() {
-        let alert = UIAlertController(title: "Игра окончена", message: "Вы заработали \(game.roundGame.score) очков", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Игра окончена", message: "Вы заработали \(game.totalScore) очков", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "Начать Заново", style: .default, handler: nil)
             alert.addAction(alertAction)
             present(alert, animated: true, completion: nil)
     }
     
     func infoLabelText() {
-        infoLabel.text = "раунд №\(game.currentRound), Набранно очков: \(game.scoreForGame)"
+        infoLabel.text = "раунд №\(game.roundItems.count), Набранно очков: \(game.totalScore)"
     }
     
         
