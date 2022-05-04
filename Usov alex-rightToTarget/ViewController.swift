@@ -17,10 +17,8 @@ class ViewController: UIViewController {
         let generatorRandomNumber = GeneratorRandomNumbers(minSecretNumber: 1, maxSecretNumber: 50)
     
         game = Game(getGenerateRandomNumber: generatorRandomNumber!, roundsTotal: 5)
-
-        updateLabelSecretNumber(currentNumberRandom: String(game.roundGame.randomNumberForRoundGame))
         humanLabel.text = ("Human number = 25")
-        infoLabelText()
+        updateLabels()
     }
     
     //MARK: - IB Outlets and Actions
@@ -37,42 +35,36 @@ class ViewController: UIViewController {
     @IBAction func checkNumberButton(_ sender: UIButton) {
         game.roundGame.calculateScorePerRound(humanNumber: game.humanNumber)
         checkIsGameEnded()
-        //infoLabelText()
-        updateLabelSecretNumber(currentNumberRandom: String(game.roundGame.randomNumberForRoundGame))
-       
+        updateLabels()
     }
     
     //MARK: - interaction (взаимодействие) View (Interface) and Model
-
-    func updateLabelSecretNumber(currentNumberRandom: String) {//не знаю почему Усов решил передать параметр в функцию, можно было просто внутри приравнять
-        secretNumberLabel.text = currentNumberRandom
-    }
     
     func checkIsGameEnded() {
         if game.isGameEnded {
             alertWindow()
-            infoLabelText()
-            game.restartGame()
-            
         } else {
             game.startNewRound()
-            infoLabelText()
-
         }
+        //infoLabelText()
+        //updateLabelSecretNumber()
     }
     
     func alertWindow() {
         let alert = UIAlertController(title: "Игра окончена", message: "Вы заработали \(game.totalScore) очков", preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "Начать Заново", style: .default, handler: nil)
+        let alertAction = UIAlertAction(title: "Начать Заново", style: .default, handler: {
+            [weak self] _ in
+            self!.game.restartGame()
+            self!.updateLabels()
+            })
             alert.addAction(alertAction)
             present(alert, animated: true, completion: nil)
     }
     
-    func infoLabelText() {
+    func updateLabels() {
+        secretNumberLabel.text = String(game.randomNumberForGame)
         infoLabel.text = "раунд №\(game.roundItems.count), Набранно очков: \(game.totalScore)"
     }
-    
-        
     
     
 }
