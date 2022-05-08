@@ -9,10 +9,9 @@ import Foundation
 
 protocol GameProtocol {
     
-    //var score: Int {get}
+    var totalScore: Int {get}
     var isGameEnded: Bool {get}
     
-    var currentRound: Int {get}
     var generateNumberDelegate: GeneratorProtocol {get}
 
     func restartGame()
@@ -24,30 +23,33 @@ class Game: GameProtocol {
     
     var generateNumberDelegate: GeneratorProtocol // Делегатор, просит Генератор, сгенерировать число.
     var roundGame: RoundGameProtocol!
-    var scoreForGame = 0
     
-    var randomNumberForGame = 0
-    var rounds: Int
-    var currentRound = 0
-    var humanNumber = 0
+    var totalScore: Int {
+        roundItems.reduce(into: 0) { partialResult, roundItems in
+            partialResult = partialResult + roundItems.score
+        }
+    }
+    
+    var randomNumberForGame: Int!
+    var roundItems: [RoundGameProtocol] = [] //в массиве, каждая сущность roundGame имеет свойство score. Которое будет использовано для подсчета всех очков (totalScore) за 5 раундов.
+    private var roundsTotal: Int!
+    var humanNumber: Int!
     var isGameEnded: Bool {
-        if currentRound >= rounds {
+        if  roundItems.count >= roundsTotal {
             return true
         } else {
             return false
         }
     }
     
-    init(getGenerateRandomNumber: GeneratorProtocol, rounds: Int) {
+    init (getGenerateRandomNumber: GeneratorProtocol, roundsTotal: Int) {
         generateNumberDelegate = getGenerateRandomNumber
-        self.rounds = rounds
-        //self.scoreDelegator = score
+        self.roundsTotal = roundsTotal
         startNewRound()
     }
     
     func restartGame() {
-        currentRound = 0
-        //scoreDelegator.score = 0
+        roundItems = []
         startNewRound()
     }
     
@@ -56,19 +58,7 @@ class Game: GameProtocol {
         randomNumberForGame = generateNumberDelegate.getGenerateRandomNumber()
         //инициирую объект RoundGame, для передачи ему randomNumberForGame.
         //Для подсчета очков внутри класса RoundGame в функции calculateScorePerRound.
-        scoreForGame += roundGame.score
         roundGame = RoundGame(randomNumberForRoundGame: randomNumberForGame)
-        
-        currentRound += 1
+        roundItems.append(roundGame)
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
