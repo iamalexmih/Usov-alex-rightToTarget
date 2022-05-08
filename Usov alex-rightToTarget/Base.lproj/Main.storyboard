@@ -82,10 +82,10 @@
             </objects>
             <point key="canvasLocation" x="-142" y="-87"/>
         </scene>
-        <!--View Controller-->
+        <!--Hex To Color View Controller-->
         <scene sceneID="ulm-XM-Ev2">
             <objects>
-                <viewController id="AJA-Qn-ogR" sceneMemberID="viewController">
+                <viewController id="AJA-Qn-ogR" customClass="HexToColorViewController" customModule="Usov_alex_rightToTarget" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JrR-rN-hx5">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,8 +93,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="77" translatesAutoresizingMaskIntoConstraints="NO" id="w5N-21-W0V">
                                 <rect key="frame" x="232.5" y="130.5" width="431" height="132"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coe HEX Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDq-N7-igx">
-                                        <rect key="frame" x="146.5" y="0.0" width="138" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code HEX Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDq-N7-igx">
+                                        <rect key="frame" x="140.5" y="0.0" width="150" height="24"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
