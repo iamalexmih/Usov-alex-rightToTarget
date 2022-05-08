@@ -106,21 +106,33 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="83" height="31"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="gray" title="Choice A"/>
+                                                <connections>
+                                                    <action selector="choiceA:" destination="AJA-Qn-ogR" eventType="touchUpInside" id="gC0-Gi-DXb"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6SP-H8-a8g">
                                                 <rect key="frame" x="116" y="0.0" width="83" height="31"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="gray" title="Choice B"/>
+                                                <connections>
+                                                    <action selector="choiceB:" destination="AJA-Qn-ogR" eventType="touchUpInside" id="e94-nA-sVJ"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AwK-KX-xk2">
                                                 <rect key="frame" x="232" y="0.0" width="83" height="31"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="gray" title="Choice C"/>
+                                                <connections>
+                                                    <action selector="choiceC:" destination="AJA-Qn-ogR" eventType="touchUpInside" id="dZ9-Gy-ZOb"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RGi-kT-UCO">
                                                 <rect key="frame" x="348" y="0.0" width="83" height="31"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="gray" title="Choice D"/>
+                                                <connections>
+                                                    <action selector="choiceD:" destination="AJA-Qn-ogR" eventType="touchUpInside" id="I8j-n5-Uai"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -135,6 +147,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MBC-j5-c1t"/>
+                    <connections>
+                        <outlet property="hexLabel" destination="jDq-N7-igx" id="FJH-iA-gMY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IkS-zB-I2d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

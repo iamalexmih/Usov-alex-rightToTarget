@@ -15,6 +15,19 @@ class HexToColorViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBOutlet weak var hexLabel: UILabel!
+    @IBAction func choiceA(_ sender: UIButton) {
+        sender.backgroundColor = UIColor.init(hex: "#ff0000")
+    }
+    
+    @IBAction func choiceB(_ sender: UIButton) {
+    }
+    
+    @IBAction func choiceC(_ sender: UIButton) {
+    }
+    @IBAction func choiceD(_ sender: UIButton) {
+    }
+    
 
     /*
     // MARK: - Navigation
