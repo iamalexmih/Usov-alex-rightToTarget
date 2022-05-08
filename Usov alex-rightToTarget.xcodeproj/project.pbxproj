@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B507924028280EC90022615E /* HexToColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B507923F28280EC90022615E /* HexToColorViewController.swift */; };
+		B507924228280F7E0022615E /* HexToUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B507924128280F7E0022615E /* HexToUIColor.swift */; };
 		B58C987B280AAE7000312D0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58C987A280AAE7000312D0B /* AppDelegate.swift */; };
 		B58C987D280AAE7000312D0B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58C987C280AAE7000312D0B /* SceneDelegate.swift */; };
 		B58C987F280AAE7000312D0B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58C987E280AAE7000312D0B /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		B507923F28280EC90022615E /* HexToColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexToColorViewController.swift; sourceTree = "<group>"; };
+		B507924128280F7E0022615E /* HexToUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexToUIColor.swift; sourceTree = "<group>"; };
 		B58C9877280AAE7000312D0B /* Usov alex-rightToTarget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Usov alex-rightToTarget.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58C987A280AAE7000312D0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B58C987C280AAE7000312D0B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				B58C988F280AC98600312D0B /* Game.swift */,
 				B58C98B628202DEB00312D0B /* GeneratorRandomNumbers.swift */,
 				B58C98B828202E2C00312D0B /* RoundGame.swift */,
+				B507924128280F7E0022615E /* HexToUIColor.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 			files = (
 				B58C98B728202DEB00312D0B /* GeneratorRandomNumbers.swift in Sources */,
 				B58C987F280AAE7000312D0B /* ViewController.swift in Sources */,
+				B507924228280F7E0022615E /* HexToUIColor.swift in Sources */,
 				B58C98B928202E2C00312D0B /* RoundGame.swift in Sources */,
 				B58C987B280AAE7000312D0B /* AppDelegate.swift in Sources */,
 				B58C987D280AAE7000312D0B /* SceneDelegate.swift in Sources */,
