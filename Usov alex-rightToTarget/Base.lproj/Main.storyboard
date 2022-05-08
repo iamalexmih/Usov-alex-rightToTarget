@@ -103,13 +103,46 @@
                     <view key="view" contentMode="scaleToFill" id="EhS-Yi-2iD">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="0DI-So-HLB">
+                                <rect key="frame" x="170.5" y="177.5" width="555.5" height="38"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKk-pU-NbX">
+                                        <rect key="frame" x="0.0" y="0.0" width="164.5" height="38"/>
+                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="FIND NUMBER" cornerStyle="large" titleAlignment="center">
+                                            <fontDescription key="titleFontDescription" type="system" weight="black" pointSize="20"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⬅️выбери ИГРУ➡️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mv1-hT-Jgs">
+                                        <rect key="frame" x="199.5" y="0.0" width="173.5" height="38"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwJ-D8-GPd">
+                                        <rect key="frame" x="408" y="0.0" width="147.5" height="38"/>
+                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="FIND COLOR" subtitle="" cornerStyle="large" titleAlignment="center">
+                                            <fontDescription key="titleFontDescription" type="system" weight="black" pointSize="20"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="pth-sk-dTD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0DI-So-HLB" firstAttribute="centerY" secondItem="pth-sk-dTD" secondAttribute="centerY" id="H5X-UO-GEN"/>
+                            <constraint firstItem="0DI-So-HLB" firstAttribute="centerX" secondItem="pth-sk-dTD" secondAttribute="centerX" id="lFa-iH-bME"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWA-UL-mjH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-895" y="401"/>
+            <point key="canvasLocation" x="-895.3125" y="400.00000000000006"/>
         </scene>
     </scenes>
     <resources>
